@@ -78,6 +78,6 @@ theme: hiero
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/yahuihui/yahuihui.github.io.git
+  repo: git@github.com:yahuihui/yahuihui.github.io.git
   branch: master
 

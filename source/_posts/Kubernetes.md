@@ -52,7 +52,7 @@ kubectl是和Kubernetes API交互的命令行程序
 
 
 
-参考文献
+参考文獻
 <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">1.https://kubernetes.io/docs/setup/independent/install-kubeadm/</a>
 <a href="https://jimmysong.io/kubernetes-handbook/concepts/concepts.html">2.https://jimmysong.io/kubernetes-handbook/concepts/concepts.html</a>
 <a herf="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet">3.http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>

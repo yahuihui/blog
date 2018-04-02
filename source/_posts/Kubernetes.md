@@ -30,7 +30,20 @@ k8s使用etcd作為儲存中介軟體
 
 ### K8S建置教學 (以三台環境建置為例)
 環境需3台。一台當master，二台當node
-執行 apt-get updat  和 apt-get upgrade
+登入後切換至最高權限 sudo su
+![K8S](0.jpg "sudo su")
+
+安裝kubeadm 管理k8s套件，依照文件照操作
+![K8S](kubeadm.jpg "安裝kubeadm")
+![K8S](001.jpg "安裝kubeadm")
+![K8S](002.jpg "安裝kubeadm")
+![K8S](003.jpg "安裝kubeadm")
+![K8S](004.jpg "安裝kubeadm")
+![K8S](005.jpg "安裝kubeadm")
+![K8S](006.jpg "安裝kubeadm")
+
+
+
 ![K8S](screenshot_001.jpg "控制台")
 ![K8S](screenshot_002.jpg "控制台")
 ![K8S](screenshot_003.jpg "控制台")

@@ -85,16 +85,17 @@ kubeadm init --pod-network-cidr=10.244.0.0/16
 
 建置nginx pods狀態，nginx的狀態要在running
 執行kubectl run nginx --image=nginx --replicas=2 --port=80 
-![建置ngin](screenshot_012.jpg "建置ngin台")
+![建置nginx](screenshot_012.jpg "建置ngin台")
+查詢pods
 ![查詢pods](screenshot_013.jpg "查詢pods")
 開始部署
-![K8S](screenshot_014.jpg "控制台")
-開始服務使用的port
-![K8S](screenshot_015.jpg "控制台")
+![開始部署](screenshot_014.jpg "開始部署")
+開服務使用的port
+![開服務使用的port](screenshot_015.jpg "開服務使用的port")
 查詢服務狀態
-![K8S](screenshot_016.jpg "控制台")
+![查詢服務狀態](screenshot_016.jpg "查詢服務狀態")
  網頁測試
-![K8S](screenshot_017.jpg "控制台")
+![ 網頁測試](screenshot_017.jpg " 網頁測試")
 
 
 ----------------------------------------

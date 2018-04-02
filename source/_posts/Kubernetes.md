@@ -54,7 +54,7 @@ kubeadm 管理k8s套件，依照文件照操作，如下圖
 安裝完kubeadm之後進行初始化和架設網路，網路是使用fiannl來建置。
 「master」 kubeadm初始化文件
 ![kubeadm初始化文件](screenshot_002.jpg "kubeadm初始化文件")
-kubeadm init --pod-network-cidr=10.244.0.0/16 
+執行kubeadm init --pod-network-cidr=10.244.0.0/16 
 ![kubeadm初始化](screenshot_003.jpg "kubeadm初始化")
 ![kubeadm初始化](screenshot_004.jpg "kubeadm初始化")
 

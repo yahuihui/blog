@@ -5,29 +5,44 @@ tags: Kubernetes、K8S
 ---
 ### Kubernetes 是什麼
 Kubernetes (通常稱為K8s) 是自動化容器操作的開源平台，它建置在docker技術之上，用於自動部署、隨時擴展或收縮容器和管理容器化（containerized）應用程式的開源系統。
+簡言之，以更高效的方式自動化跨群集的應用程序容器的分發和調度。
+
+![k8s_cluster](k8s_cluster.jpg "k8s_cluster")
+![K8S_nodes](k8s_nodes.jpg "k8s_nodes.jpg")
+主服務器(master)管理集群，節點(nodes)用於託管正在運行的應用程序。
 
 K8S屬分布式系統，主要元件有：
-一、Master – 主要控制節點。包含以下元件：
+一、Master – 主服務器(master)管理集群。包含以下元件：
     1.API Server：提供給外部使用者和內部元件呼叫。
     2.scheduler：負責各種排程作業。
     3.controller：負責執行各種控制。
 二、. Node – 執行k8s的實體或虛擬的主機，並運行了許多容器。包含以下元件：
-    1.kubelet：負責Node節點上pod的創建、修改、監控、刪除等全生命週期的管理
+    1.kubelet：負責Kubernetes Master和Node之間的通信的過程; 它管理機器上運行的Pod和容器。
     2.kubernetes proxy：Proxy是為了解決外部網絡能夠訪問跨機器集群中容器提供的應用服務而設計的。
     3.docker：node是容器執行節點，需要執行docker服務
 管理pod、檢查容器是否正常運行、監控所有節點的資源使用狀況
 在 kubernetes 的設定中，最基本的管理单位是pod，而不是 container。pod是許多容器的組合。
 ![pod](pod.jpg "pod VS container")
 
-Kubernetes中所有的配置都是通过API对象的spec去设置的s
+### K8S 架構
+![k8s_architecture](k8s_architecture.jpg "k8s_architecture")
+
+這些節點使用主機公開的Kubernetes API與主機進行通信。
+
+Kubernetes中所有的配置都是通过API对象的spec去设置的
 kubernates 是使用etcd做為系統的設定儲存中心、重要資料都是持久化在etcd中的。
 
-
 kubectl是和Kubernetes API交互的命令行程序
+kubectl是用於針對Kubernetes群集運行命令的命令行界面
 
-k8s使用etcd作為儲存中介軟體
 
-![k8s_architecture](k8s_architecture.jpg "k8s_architecture")
+
+Kubernetes集群内部存在三個IP，分别是：
+Node IP：主機的IP地址
+Pod IP：使用网络插件创建的IP（如flannel），使跨主机的Pod可以互通
+Cluster IP：虚拟IP，通过iptables规则访问服务
+
+
 
 ### K8S建置教學 (以三台環境建置為例)
 環境需3台。一台當master，二台當node
@@ -108,4 +123,5 @@ kubeadm 管理k8s套件，依照文件照操作，如下圖
 <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">1.https://kubernetes.io/docs/setup/independent/install-kubeadm/</a>
 <a href="https://jimmysong.io/kubernetes-handbook/concepts/concepts.html">2.https://jimmysong.io/kubernetes-handbook/concepts/concepts.html</a>
 <a herf="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet">3.http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>
-<a herf="https://jimmysong.io/kubernetes-handbook/">3.http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>
+<a herf="https://jimmysong.io/kubernetes-handbook/">4.https://jimmysong.io/kubernetes-handbook </a>
+<a herf="https://kubernetes.io/docs/tutorials/kubernetes-basics/explore-intro/">5.https://kubernetes.io/docs/tutorials/kubernetes-basics/explore-intro/ </a>

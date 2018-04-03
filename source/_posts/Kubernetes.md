@@ -27,6 +27,7 @@ kubectl是和Kubernetes API交互的命令行程序
 
 k8s使用etcd作為儲存中介軟體
 
+![k8s_architecture](k8s_architecture.jpg "k8s_architecture")
 
 ### K8S建置教學 (以三台環境建置為例)
 環境需3台。一台當master，二台當node
@@ -107,3 +108,4 @@ kubeadm 管理k8s套件，依照文件照操作，如下圖
 <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">1.https://kubernetes.io/docs/setup/independent/install-kubeadm/</a>
 <a href="https://jimmysong.io/kubernetes-handbook/concepts/concepts.html">2.https://jimmysong.io/kubernetes-handbook/concepts/concepts.html</a>
 <a herf="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet">3.http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>
+<a herf="https://jimmysong.io/kubernetes-handbook/">3.http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>

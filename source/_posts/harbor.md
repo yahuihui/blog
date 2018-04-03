@@ -18,7 +18,7 @@ Ubuntu 16.04 LTS
 Python 2.7 ↑
 Docker 1.10 ↑
 Docker-compose 1.6.0 ↑  
-Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose使用Docker標籤來追踪容器)
+Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose使用Docker標籤來追踪容器
 
 # 安裝作業
 確認VM版本 Check Version
@@ -31,6 +31,8 @@ Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose�
 安裝docker
 ![安裝docker](install_docker.jpg "安裝docker")
 驗證docker版本
-![驗證docker版本](docker_version.jpg " 驗證docker版本")
+![驗證docker版本](docker_version.jpg "驗證docker版本")
 安裝Docker Compose
+![安裝compose](compose.jpg "安裝compose")
 驗證Docker Compose
+

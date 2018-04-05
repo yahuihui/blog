@@ -21,7 +21,8 @@ K8S屬分布式系統，主要元件有：
     2.kubernetes proxy：Proxy是為了解決外部網絡能夠訪問跨機器集群中容器提供的應用服務而設計的。
     3.docker：node是容器執行節點，需要執行docker服務
 管理pod、檢查容器是否正常運行、監控所有節點的資源使用狀況
-在 kubernetes 的設定中，最基本的管理单位是pod，而不是 container。pod是許多容器的組合。
+在 kubernetes 的設定中，最基本的管理单位是pod，
+而不是 container。pod是許多容器的組合，容器是真正的執行個體，pod網路都是共用的
 ![pod](pod.jpg "pod VS container")
 
 ### K8S 架構
@@ -53,15 +54,27 @@ Cluster IP：虚拟IP，通过iptables规则访问服务
 執行apt-get upgrade -y
 執行apt-get dist-upgrade -y
 安裝docker：apt-get install –y docker.io 
-安裝kubelet kubeadm kubectl ：apt-get install -y kubelet kubeadm kubectl 
 kubeadm 管理k8s套件，依照文件照操作，如下圖
 ![kubeadm官方文件](kubeadm.jpg "kubeadm官方文件")
+
+apt-get update && apt-get install -y apt-transport-https 
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - 
+ 
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list 
+deb http://apt.kubernetes.io/ kubernetes-xenial main 
+EOF 
+ 
+apt-get update 
+ 
+apt-get install -y kubelet kubeadm kubectl 
+
 ![安裝kubeadm](001.jpg "安裝kubeadm")
 ![安裝kubeadm](002.jpg "安裝kubeadm")
 ![安裝kubeadm](003.jpg "安裝kubeadm")
 ![安裝kubeadm](004.jpg "安裝kubeadm")
 ![安裝kubeadm](005.jpg "安裝kubeadm")
-![安裝kubeadm](006.jpg "安裝kubeadm")
+
 
 「master、node」關閉SWAP，因為SWAP開著會無法安裝K8S
 執行swapoff –a 
@@ -69,6 +82,8 @@ kubeadm 管理k8s套件，依照文件照操作，如下圖
 
 安裝完kubeadm之後進行初始化和架設網路，網路是使用fiannl來建置。
 「master」 kubeadm初始化文件
+
+
 ![kubeadm初始化文件](screenshot_002.jpg "kubeadm初始化文件")
 執行kubeadm init --pod-network-cidr=10.244.0.0/16 
 ![kubeadm初始化](screenshot_003.jpg "kubeadm初始化")

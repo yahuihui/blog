@@ -25,7 +25,7 @@ K8S屬分布式系統，主要元件有：
     1.kubelet：負責Kubernetes Master和Node之間的通信的過程; 它管理機器上運行的Pod和容器。
     2.kubernetes proxy：Proxy是為了解決外部網絡能夠訪問跨機器集群中容器提供的應用服務。
     3.docker：管理pod、檢查容器是否正常運行、監控所有節點的資源使用狀況，是Pod中使用的最常見的容器運行
-![k8s1](k8s1.jpg "k8s1")
+![k8s基本概念](k8s1.jpg "k8s基本概念")
 
 ### K8S 架構
 ![k8s_architecture](k8s_architecture.jpg "k8s_architecture")

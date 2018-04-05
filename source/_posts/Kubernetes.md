@@ -4,26 +4,28 @@ date: 2018-03-27 17:02:07
 tags: Kubernetes、K8S
 ---
 ### Kubernetes 是什麼
-Kubernetes (通常稱為K8s) 是自動化容器操作的開源平台，它建置在docker技術之上，用於自動部署、隨時擴展或收縮容器和管理容器化（containerized）應用程式的開源系統。
+Kubernetes(通常稱為K8s)是 Google 團隊開發的開源項目，它的目標是管理跨多個主机的容器平台，它建置在docker技術之上，用於自動部署、隨時擴展或收縮容器和管理容器化（containerized）應用程式的開源系統。
 簡言之，以更高效的方式自動化跨群集的應用程序容器的分發和調度。
 
 ![k8s_cluster](k8s_cluster.jpg "k8s_cluster")
 ![K8S_nodes](k8s_nodes.jpg "k8s_nodes.jpg")
-主服務器(master)管理集群，節點(nodes)用於託管正在運行的應用程序。
+主服務器(master)管理集群，節點(nodes)用於管理正在運行的應用程序。
+
+在 kubernetes 的設定中，最基本的管理单位是pod。pod是一個或多個容器的組合，容器才是真正的執行個體。
+Pod中的每個容器都共享網路，包括IP地址和網路端口
+![pod](pod.jpg "pod VS container")
+
 
 K8S屬分布式系統，主要元件有：
 一、Master – 主服務器(master)管理集群。包含以下元件：
-    1.API Server：提供給外部使用者和內部元件呼叫。
-    2.scheduler：負責各種排程作業。
+    1.API Server：是整個系统的對外接口，提供給外部使用者和內部元件呼叫。
+    2.scheduler：負責各種排程作業、對資源進行調度，分配某個pod 到某個節點node上。
     3.controller：負責執行各種控制。
-二、. Node – 執行k8s的實體或虛擬的主機，並運行了許多容器。包含以下元件：
+二、Node – 執行k8s的實體或虛擬的主機，並運行了許多容器。包含以下元件：
     1.kubelet：負責Kubernetes Master和Node之間的通信的過程; 它管理機器上運行的Pod和容器。
-    2.kubernetes proxy：Proxy是為了解決外部網絡能夠訪問跨機器集群中容器提供的應用服務而設計的。
-    3.docker：node是容器執行節點，需要執行docker服務
-管理pod、檢查容器是否正常運行、監控所有節點的資源使用狀況
-在 kubernetes 的設定中，最基本的管理单位是pod，
-而不是 container。pod是許多容器的組合，容器是真正的執行個體，pod網路都是共用的
-![pod](pod.jpg "pod VS container")
+    2.kubernetes proxy：Proxy是為了解決外部網絡能夠訪問跨機器集群中容器提供的應用服務。
+    3.docker：管理pod、檢查容器是否正常運行、監控所有節點的資源使用狀況，是Pod中使用的最常見的容器運行
+![k8s1](k8s1.jpg "k8s1")
 
 ### K8S 架構
 ![k8s_architecture](k8s_architecture.jpg "k8s_architecture")
@@ -31,8 +33,7 @@ K8S屬分布式系統，主要元件有：
 這些節點使用主機公開的Kubernetes API與主機進行通信。
 
 Kubernetes中所有的配置都是通过API对象的spec去设置的
-kubernates 是使用etcd做為系統的設定儲存中心、重要資料都是持久化在etcd中的。
-
+kubernates是使用etcd做為系統的設定儲存中心、重要資料都是持久化在etcd中的。
 kubectl是和Kubernetes API交互的命令行程序
 kubectl是用於針對Kubernetes群集運行命令的命令行界面
 
@@ -135,8 +136,9 @@ apt-get install -y kubelet kubeadm kubectl
 
 
 参考文獻
-<a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">1.https://kubernetes.io/docs/setup/independent/install-kubeadm/</a>
-<a href="https://jimmysong.io/kubernetes-handbook/concepts/concepts.html">2.https://jimmysong.io/kubernetes-handbook/concepts/concepts.html</a>
-<a herf="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet">3.http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>
-<a herf="https://jimmysong.io/kubernetes-handbook/">4.https://jimmysong.io/kubernetes-handbook </a>
-<a herf="https://kubernetes.io/docs/tutorials/kubernetes-basics/explore-intro/">5.https://kubernetes.io/docs/tutorials/kubernetes-basics/explore-intro/ </a>
+<a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">https://kubernetes.io/docs/setup/independent/install-kubeadm/</a>
+<a href="https://jimmysong.io/kubernetes-handbook/concepts/concepts.html">https://jimmysong.io/kubernetes-handbook/concepts/concepts.html</a>
+<a herf="http://cizixs.com/2016/10/25/kubernetes-intro-kubelet">http://cizixs.com/2016/10/25/kubernetes-intro-kubelet </a>
+<a herf="https://jimmysong.io/kubernetes-handbook/">https://jimmysong.io/kubernetes-handbook </a>
+<a herf="https://kubernetes.io/docs/tutorials/kubernetes-basics/explore-intro/">https://kubernetes.io/docs/tutorials/kubernetes-basics/explore-intro/ </a>
+<a herf="https://yeasy.gitbooks.io/docker_practice/content/kubernetes/concepts.html">https://yeasy.gitbooks.io/docker_practice/content/kubernetes/concepts.html </a>

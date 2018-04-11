@@ -20,7 +20,7 @@ Docker 1.10 ↑
 Docker-compose 1.6.0 ↑  
 Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose使用Docker標籤來追踪容器
 
-# 安裝作業
+# 環境安裝作業
 確認VM版本 Check Version
 ![check version](version.jpg "cherck version")
 執行apt-get update 和apt-get upgrade
@@ -34,5 +34,12 @@ Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose�
 ![驗證docker版本](docker_version.jpg "驗證docker版本")
 安裝Docker Compose
 ![安裝compose](compose.jpg "安裝compose")
-驗證Docker Compose
+編輯compose權限 與 驗證Docker Compose
+![驗證compose](compose_version.jpg "驗證compose")
+openssl.cnf內的[v3_ca]加入倉庫IP
+![加入倉庫IP](addip.jpg "加入倉庫IP")
 
+# 安裝Harbor
+下載版本v1.1.1
+wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-installer-v1.1.1.tgz
+![下載harbor](download harbor.jpg "下載harbor")

@@ -37,7 +37,7 @@ Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose�
 編輯compose權限 與 驗證Docker Compose
 ![編輯與驗證compose](compose_version.jpg "編輯與驗證compose")
 openssl.cnf內的[v3_ca]加入倉庫IP
-![加入倉庫IP](addip.jpg "加入倉庫IP")
+![加入倉庫IP](add harbor ip.jpg "加入倉庫IP")
 
 ### 安裝Harbor
 下載版本v1.1.1

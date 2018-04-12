@@ -46,4 +46,46 @@ wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-ins
 解壓縮檔案
 ![解壓縮](unzip.jpg "解壓縮")
 
+修改Modify harbor.cfg
+-------
+< hostname = reg.mydomain.com
+> hostname = harbor.*****.xsg
+
+< ui_url_protocol = http
+> ui_url_protocol = https
+
+< ssl_cert = /data/cert/server.crt
+> ssl_cert = /data/cert/*****.xsg.crt
+
+< ssl_cert_key = /data/cert/server.key
+> ssl_cert_key = /data/cert/*****.xsg.key
+
+-------
+harbor安裝
+sudo ./install.sh
+
+在harbor倉庫下檢查容器
+sudo docker-compose top
+
+新增DNS
+
+https://harbor.atcity.xsg/
+帳號：admin
+密碼：Harbor12345
+
+### 安裝 Certificate
+在harbor下產生cert資料夾，並建立憑證，製作成.crt(CERTIFICATE) 和.key  (PRIVATE KEY) 檔案 
+
+
+
+
+
+
+
+_____
+mkdir -p /data/cert/
+mv /date/cert/atcity.xsg.crt /data/cert/
+mv /date/cert/atcity.xsg.key /data/cert/
+
+
 

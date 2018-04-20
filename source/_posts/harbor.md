@@ -74,19 +74,52 @@ https://harbor.atcity.xsg/
 密碼：Harbor12345
 
 ### 安裝 Certificate
-在harbor下產生cert資料夾，並建立憑證，製作成.crt(CERTIFICATE) 和.key  (PRIVATE KEY) 檔案 
-
-
-
-
-### LADP設定
-
-
-
-_____
+在harbor下產生cert資料夾，可利用windows產生憑證後，改製作成.crt(CERTIFICATE) 和.key  (PRIVATE KEY) 檔案 
+將憑證移到/data/cert/，以免後續改用LDAP需重啟服務清掉data，憑證會被刪掉
 mkdir -p /data/cert/
 mv /date/cert/atcity.xsg.crt /data/cert/
 mv /date/cert/atcity.xsg.key /data/cert/
 
 
+### LADP設定
+修改設定檔
+vim haobor.cfg
 
+< auth_mode = db_auth
+-> auth_mode = ldap_auth
+
+< ldap_url = ldaps://ldap.mydomain.com
+-> ldap_url = ldap://t0ldap.gosmio.biz:3268
+
+< #ldap_searchdn = uid=searchuser,ou=people,dc=mydomain,dc=com
+-> ldap_searchdn = CN=ittestuser,OU=PublicID,OU=Account,DC=gosmio,DC=biz
+
+< #ldap_search_pwd = password
+-> ldap_search_pwd = a123456A
+
+< ldap_basedn = ou=people,dc=mydomain,dc=com
+-> ldap_basedn = dc=gosmio,dc=biz
+
+< ldap_uid = uid
+-> ldap_uid = sAMAccountName
+
+
+重啟服務並強制清除data目錄下資料
+    docker-compose down -v
+    rm -rf /data
+    ./prepare
+    docker-compose up -d
+
+測試網頁登入
+https://harbor.atcity.xsg/
+
+admin / Harbor12345
+![登入](login.jpg "登入")
+![登入成功](login_admin.jpg "登入成功")
+
+調整Configuration設定
+![調整LDAP](LDAP_Configuration.jpg "調整LDAP")
+
+
+測試網頁登入
+![登入成功](login_LDAP.jpg "登入成功")

@@ -35,8 +35,9 @@ K8S屬分布式系統，主要元件有：
 Kubernetes中所有的配置都是通过API对象的spec去设置的
 kubernates是使用etcd做為系統的設定儲存中心、重要資料都是持久化在etcd中的。
 kubectl是和Kubernetes API交互的命令行程序
-kubectl是用於針對Kubernetes群集運行命令的命令行界面
+kubectl是用於針對Kubernetes群集運行命令的命令行界面, 類似docker run的功能
 
+*
 RPC(Remote Procedure Call)遠端程序呼叫是一個電腦通訊協定。該協定允許執行於一台電腦的程式呼叫另一台電腦的子程式
 GRPC 是Google提供的一套RPC函式庫，需要Go version 1.5 以上的版本才支援。
 

@@ -49,16 +49,16 @@ wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-ins
 修改Modify harbor.cfg
 -------
 < hostname = reg.mydomain.com
-> hostname = harbor.*****.xsg
+-> hostname = harbor._______.xsg
 
 < ui_url_protocol = http
-> ui_url_protocol = https
+-> ui_url_protocol = https
 
 < ssl_cert = /data/cert/server.crt
-> ssl_cert = /data/cert/*****.xsg.crt
+-> ssl_cert = /data/cert/_______.xsg.crt
 
 < ssl_cert_key = /data/cert/server.key
-> ssl_cert_key = /data/cert/*****.xsg.key
+-> ssl_cert_key = /data/cert/_______.xsg.key
 
 -------
 harbor安裝
@@ -79,6 +79,7 @@ https://harbor.atcity.xsg/
 
 
 
+### LADP設定
 
 
 

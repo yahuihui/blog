@@ -37,7 +37,10 @@ kubernates是使用etcd做為系統的設定儲存中心、重要資料都是持
 kubectl是和Kubernetes API交互的命令行程序
 kubectl是用於針對Kubernetes群集運行命令的命令行界面
 
+RPC(Remote Procedure Call)遠端程序呼叫是一個電腦通訊協定。該協定允許執行於一台電腦的程式呼叫另一台電腦的子程式
+GRPC 是Google提供的一套RPC函式庫，需要Go version 1.5 以上的版本才支援。
 
+protobuf (Protocol Buffers) 是由 Google 所推出的一格式，可以把它想像成是 XML 或 JSON 格式，但是更小、更快，而且更簡潔。這能夠幫你節省網路與硬體資源，且只需要定義一次資料結構，接著就會自動生成符合你程式語言的檔案，讓你能夠直接在你的程式上使用。
 
 Kubernetes集群内部存在三個IP，分别是：
 Node IP：主機的IP地址

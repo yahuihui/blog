@@ -3,7 +3,7 @@ title: Kubernetes
 date: 2018-03-27 17:02:07
 tags: Kubernetes、K8S
 ---
-![k8s](k8s.jpg "k8s")
+![k8s](k8slogo.jpg "k8s")
 ### 什麼是 Kubernetes？
 
 Kubernetes(通常稱為K8s)是 Google 團隊開發的開源項目，它的目標是管理跨多個主机的容器平台，它建置在docker技術之上，用於自動部署、隨時擴展或收縮容器和管理容器化（containerized）應用程式的開源系統。
@@ -92,7 +92,7 @@ apt-get install -y kubelet kubeadm kubectl
 
 
 ![kubeadm初始化文件](screenshot_002.jpg "kubeadm初始化文件")
-執行kubeadm init --pod-network-cidr=10.244.0.0/16 
+執行kubeadm init - -pod-network-cidr=10.244.0.0/16 
 ![kubeadm初始化](screenshot_003.jpg "kubeadm初始化")
 ![kubeadm初始化](screenshot_004.jpg "kubeadm初始化")
 
@@ -114,7 +114,7 @@ apt-get install -y kubelet kubeadm kubectl
 ![分配網路](screenshot_010.jpg "分配網路")
 
 「master」檢查 DNS 狀態狀態
-執行kubectl get pods –namespace kube-system 
+執行kubectl get pods – -namespace kube-system 
 剛開始 dns 還是 pending 狀態，等過一段時間後就會是 running 狀態
 ![檢查 DNS 狀態狀態](screenshot_011.jpg "檢查 DNS 狀態狀態")
 以上k8s建置完畢
@@ -122,17 +122,22 @@ apt-get install -y kubelet kubeadm kubectl
 ### 測試cluster，以nginx為例
 
 建置nginx pods狀態，nginx的狀態要在running
-執行kubectl run nginx --image=nginx --replicas=2 --port=80 
+執行kubectl run nginx - -image=nginx - -replicas=2 - -port=80 
 ![建置nginx](screenshot_012.jpg "建置ngin台")
 查詢pods
+執行 kubectl get pods
 ![查詢pods](screenshot_013.jpg "查詢pods")
 開始部署
+執行 kubectl get deploy
 ![開始部署](screenshot_014.jpg "開始部署")
 開服務使用的port
+執行 kubectl expose deploy nginx - -type=NodePort
 ![開服務使用的port](screenshot_015.jpg "開服務使用的port")
 查詢服務狀態
+執行 kubectl get service
 ![查詢服務狀態](screenshot_016.jpg "查詢服務狀態")
  網頁測試
+ VM的IP+NodePort
 ![ 網頁測試](screenshot_017.jpg " 網頁測試")
 
 

@@ -3,6 +3,7 @@ title: filebeat
 date: 2018-03-28 17:14:34
 tags:
 ---
+![filebeat](filebeat.jpg "filebeat")
 ### ELK 簡介 
 ELK 是 Elasticsearch、Logstash 和 Kibana 三種軟體產品的首字母縮寫，這三者都是開源軟體。
  

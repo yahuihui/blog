@@ -3,7 +3,9 @@ title: Kubernetes
 date: 2018-03-27 17:02:07
 tags: Kubernetes、K8S
 ---
-### Kubernetes 是什麼
+![k8s](k8s.jpg "k8s")
+### 什麼是 Kubernetes？
+
 Kubernetes(通常稱為K8s)是 Google 團隊開發的開源項目，它的目標是管理跨多個主机的容器平台，它建置在docker技術之上，用於自動部署、隨時擴展或收縮容器和管理容器化（containerized）應用程式的開源系統。
 簡言之，以更高效的方式自動化跨群集的應用程序容器的分發和調度。
 

@@ -4,7 +4,7 @@ date: 2018-03-27 17:02:07
 tags: Kubernetes、K8S
 ---
 ![k8s](k8slogo.jpg "k8s")
-### 什麼是 Kubernetes？
+### 什麼是 Kubernetes
 
 Kubernetes(通常稱為K8s)是 Google 團隊開發的開源項目，它的目標是管理跨多個主机的容器平台，它建置在docker技術之上，用於自動部署、隨時擴展或收縮容器和管理容器化（containerized）應用程式的開源系統。
 簡言之，以更高效的方式自動化跨群集的應用程序容器的分發和調度。
@@ -110,6 +110,7 @@ apt-get install -y kubelet kubeadm kubectl
 ![node2 join](screenshot_008.jpg "node2 join")
 
 「master」真正分配網路
+執行kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
 ![分配網路文件](screenshot_009.jpg "分配網路文件")
 ![分配網路](screenshot_010.jpg "分配網路")
 

@@ -85,7 +85,7 @@ apt-get install -y kubelet kubeadm kubectl
 ![安裝kubeadm](005.jpg "安裝kubeadm")
 
 
-「master、node」關閉SWAP，因為SWAP開著會無法安裝K8S
+「master、node」關閉SWAP，這是由於目前尚不支援 swap 分區，執行下列指令將 swap 關閉即可, SWAP開著會無法安裝K8S
 ```
 swapoff –a 
 ```
@@ -167,7 +167,8 @@ kubectl get service
 
 
 ----------------------------------------
-如需重建，整組刪掉後再進行kubectl init
+如需重建，整組刪掉後包含master和node，再進行kubectl init
+注意: 此指令會移除所有 Kubernetes 相關服務及資料
 ![kubeamd reset 刪除](screenshot_001.jpg "kubeamd reset 刪除")
 
 

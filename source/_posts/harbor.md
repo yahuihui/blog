@@ -45,18 +45,19 @@ openssl.cnf內的[v3_ca]加入倉庫IP
 ![加入倉庫IP](add harbor ip.jpg "加入倉庫IP")
 
 ### 安裝Harbor
-下載版本v1.1.1
+一、下載版本v1.1.1
 wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-installer-v1.1.1.tgz
 ![下載harbor](download harbor.jpg "下載harbor")
 解壓縮檔案
 ![解壓縮](unzip.jpg "解壓縮")
 
-### 修改Harbor config
-
-![修改harbor.cfg](harbor_cfg.jpg "修改harbor.cfg")
+二、修改Harbor config
+/// vim haobor.cfg
+![進入harbor.cfg](harbor_cfg.jpg "進入harbor.cfg")
+![修改harbor.cfg](fix_harbor_cfg.jpg "修改harbor.cfg")
 
 -------
- hostname = reg.mydomain.com
+hostname = reg.mydomain.com
 → hostname = harbor._______.xsg
 
  ui_url_protocol = http
@@ -68,22 +69,25 @@ wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-ins
  ssl_cert_key = /data/cert/server.key
 → ssl_cert_key = /data/cert/_______.xsg.key
 
-![修改harbor.cfg](fix_harbor_cfg.jpg "修改harbor.cfg")
-
-
-
 -------
-harbor安裝
-sudo ./install.sh
 
-在harbor倉庫下檢查容器
+
+三、harbor安裝
+sudo ./install.sh
+![install_harbor](install_harbor.jpg "install_harbor")
+
+四、在harbor倉庫下檢查容器
 sudo docker-compose top
 
-新增DNS
+五、新增DNS
+![新增dns設定](dns1.jpg "新增dns設定")
+![進入dns設定](dns2.jpg "進入dns設定")
+![新增dns設定](dns3.jpg "新增dns設定")
 
+六、harbor web登入
 https://harbor.atcity.xsg/
 帳號：admin
-密碼：Harbor12345
+密碼：Harbor12345(預設)
 
 ### 安裝 Certificate
 在harbor下產生cert資料夾，可利用windows產生憑證後，改製作成.crt(CERTIFICATE) 和.key  (PRIVATE KEY) 檔案 
@@ -94,8 +98,10 @@ mv /date/cert/atcity.xsg.key /data/cert/
 
 
 ### LADP設定
-修改設定檔
+修改Harbor LDAP config
 vim haobor.cfg
+![進入harbor.cfg](harbor_cfg.jpg "進入harbor.cfg")
+![修改LDAP設定](fix_LDAB_harbor_cfg.jpg "修改LDAP設定")
 
 < auth_mode = db_auth
 -> auth_mode = ldap_auth
@@ -116,13 +122,16 @@ vim haobor.cfg
 -> ldap_uid = sAMAccountName
 
 
+
 重啟服務並強制清除data目錄下資料
     docker-compose down -v
     rm -rf /data
     ./prepare
     docker-compose up -d
+![docker-compose down -v](docker-compose down -v.jpg "docker-compose down -v")
 
-測試網頁登入
+
+測試網頁使用LDAP登入
 https://harbor.atcity.xsg/
 
 admin / Harbor12345
@@ -131,7 +140,6 @@ admin / Harbor12345
 
 調整Configuration設定
 ![調整LDAP](LDAP_Configuration.jpg "調整LDAP")
-
 
 測試網頁登入
 ![登入成功](login_LDAP.jpg "登入成功")

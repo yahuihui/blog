@@ -25,8 +25,8 @@ GCP內部預設的角色有：
 - Owner：資源的擁有者，可以再將資源分享給其他人員
 - Editor：資源的可編輯者，可以針對資源進行新增、修改、刪除等動作
 - Viewer：資源的檢視者，可以針對資源進行使用，但無法修改資源狀態。
-服務代理人：
-- default預設的管理員(Compute Engine default service account)請不要砍掉，否則會有無法預期的問題
+- 服務代理人：使用各功能會自動新增出服務代理人
+★ default預設的管理員(Compute Engine default service account)請不要砍掉，否則會有無法預期的問題
 
 ![IAM範例](iam01.png "IAM範例")
 
@@ -65,3 +65,5 @@ Stackdriver可以通過訪問世界各地的地點來驗證服務的可用性。
 Monitoring有一個概覽頁面，顯示您的所有正常運行時間檢查，以及詳細的個別檢查的儀表板。
 
 如果您正在檢查的資源不公開，則必須配置資源的防火牆以允許來自正常運行時間檢查服務器的傳入流量。
+
+Google Stackdriver 提供基本級和進階級。

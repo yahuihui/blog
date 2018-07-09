@@ -6,30 +6,33 @@ tags:
 ![harbor](harbor.jpg " harbor")
 ## 什麼是 Harbor？？
 
-Harbor是VMware公司開源的企業級DockerRegistry項目
+Harbor是VMware公司開源的企業級DockerRegistry項目，Docker Registry 是被用來儲存 Docker 所建立的映像檔的地方，我們可以把自己建立的映像檔透過上傳到 Registries 來分享給其他人
 Harbor是一個用於存儲和分發的Docker鏡像的企業級Registry服務器
-Harbor提供更好的性能和安全性。使註冊表更接近構建和運行環境可提高圖像傳輸效率。
+Harbor提供更好的性能、安全性、UI介面，使用者可以輕鬆的瀏覽、搜索鏡像倉庫以及對項目進行管理。
 Harbor與現有的企業LDAP / AD集成，用於用戶驗證和管理。
 
 
-## Harbor建置教學
 
+## Harbor建置教學
 
 ### 環境準備
 Ubuntu 16.04 LTS
 Python 2.7 ↑
 Docker 1.10 ↑
 Docker-compose 1.6.0 ↑  
-Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose使用Docker標籤來追踪容器
+Docker Compose依靠Docker Engine進行任何有意義的工作。ex：Compose使用Docker標籤來追踪容器。
 
 ### 環境安裝作業
 確認VM版本 Check Version
-![check version](version.jpg "cherck version")
-執行apt-get update 和apt-get upgrade
+![check VM version](version.jpg "cherck VM version")
+執行apt-get update
 ![apt-get update](update.jpg "apt-get update")
+執行apt-get upgrade
 ![apt-get upgrade](upgrade.jpg "apt-get upgrade")
-安裝python與驗證python版本
-![安裝與驗證python](install_python_version.jpg "安裝與驗證python")
+安裝python
+![安裝python](install_python.jpg "安裝python")
+驗證python版本
+![驗證python](python_version.jpg "驗證python")
 安裝docker
 ![安裝docker](install_docker.jpg "安裝docker")
 驗證docker版本
@@ -48,20 +51,26 @@ wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-ins
 解壓縮檔案
 ![解壓縮](unzip.jpg "解壓縮")
 
-修改Modify harbor.cfg
+### 修改Harbor config
+
+![修改harbor.cfg](harbor_cfg.jpg "修改harbor.cfg")
 
 -------
-< hostname = reg.mydomain.com
--> hostname = harbor._______.xsg
+ hostname = reg.mydomain.com
+→ hostname = harbor._______.xsg
 
-< ui_url_protocol = http
--> ui_url_protocol = https
+ ui_url_protocol = http
+→ ui_url_protocol = https
 
-< ssl_cert = /data/cert/server.crt
--> ssl_cert = /data/cert/_______.xsg.crt
+ ssl_cert = /data/cert/server.crt
+→ ssl_cert = /data/cert/_______.xsg.crt
 
-< ssl_cert_key = /data/cert/server.key
--> ssl_cert_key = /data/cert/_______.xsg.key
+ ssl_cert_key = /data/cert/server.key
+→ ssl_cert_key = /data/cert/_______.xsg.key
+
+![修改harbor.cfg](fix_harbor_cfg.jpg "修改harbor.cfg")
+
+
 
 -------
 harbor安裝

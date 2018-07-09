@@ -52,7 +52,7 @@ wget https://github.com/vmware/harbor/releases/download/v1.1.1/harbor-online-ins
 ![解壓縮](unzip.jpg "解壓縮")
 
 二、修改Harbor config
-/// vim haobor.cfg
+vim haobor.cfg
 ![進入harbor.cfg](harbor_cfg.jpg "進入harbor.cfg")
 ![修改harbor.cfg](fix_harbor_cfg.jpg "修改harbor.cfg")
 
@@ -64,11 +64,9 @@ hostname = reg.mydomain.com
 → ui_url_protocol = https
 
  ssl_cert = /data/cert/server.crt
-→ ssl_cert = /data/cert/_______.xsg.crt
-
+→ ssl_cert = /home/server/harbor/cert/_____.xsg.crt
  ssl_cert_key = /data/cert/server.key
-→ ssl_cert_key = /data/cert/_______.xsg.key
-
+→ ssl_cert_key = /home/server/harbor/cert/_____.xsg.key
 -------
 
 
@@ -91,10 +89,16 @@ https://harbor.atcity.xsg/
 
 ### 安裝 Certificate
 在harbor下產生cert資料夾，可利用windows產生憑證後，改製作成.crt(CERTIFICATE) 和.key  (PRIVATE KEY) 檔案 
-將憑證移到/data/cert/，以免後續改用LDAP需重啟服務清掉data，憑證會被刪掉
-mkdir -p /data/cert/
-mv /date/cert/atcity.xsg.crt /data/cert/
-mv /date/cert/atcity.xsg.key /data/cert/
+使用xftp上傳，或是產空白檔貼上憑證
+
+因config預設的憑證路徑是在/data/cert/，以免後續改用LDAP需重啟服務清掉data，憑證會被刪掉
+所以把憑證改設定在 
+/home/server/harbor/cert/atcity.xsg.crt
+/home/server/harbor/cert/atcity.xsg.key
+
+mkdir cert
+cp /date/cert/atcity.xsg.crt /home/server/harbor/cert/
+cp /date/cert/atcity.xsg.key /home/server/harbor/cert/
 
 
 ### LADP設定
@@ -103,25 +107,26 @@ vim haobor.cfg
 ![進入harbor.cfg](harbor_cfg.jpg "進入harbor.cfg")
 ![修改LDAP設定](fix_LDAB_harbor_cfg.jpg "修改LDAP設定")
 
-< auth_mode = db_auth
--> auth_mode = ldap_auth
+-------
+auth_mode = db_auth
+→ auth_mode = ldap_auth
 
-< ldap_url = ldaps://ldap.mydomain.com
--> ldap_url = ldap://t0ldap.gosmio.biz:3268
+ldap_url = ldaps://ldap.mydomain.com
+→ ldap_url = ldap://t0ldap.gosmio.biz:3268
 
-< #ldap_searchdn = uid=searchuser,ou=people,dc=mydomain,dc=com
--> ldap_searchdn = CN=ittestuser,OU=PublicID,OU=Account,DC=gosmio,DC=biz
+ldap_searchdn = uid=searchuser,ou=people,dc=mydomain,dc=com
+→ ldap_searchdn = CN=ittestuser,OU=PublicID,OU=Account,DC=gosmio,DC=biz
 
-< #ldap_search_pwd = password
--> ldap_search_pwd = a123456A
+ldap_search_pwd = password
+→ ldap_search_pwd = a123456A
 
-< ldap_basedn = ou=people,dc=mydomain,dc=com
--> ldap_basedn = dc=gosmio,dc=biz
+ldap_basedn = ou=people,dc=mydomain,dc=com
+→ ldap_basedn = dc=gosmio,dc=biz
 
-< ldap_uid = uid
--> ldap_uid = sAMAccountName
+ldap_uid = uid
+→ ldap_uid = sAMAccountName
 
-
+-----
 
 重啟服務並強制清除data目錄下資料
     docker-compose down -v

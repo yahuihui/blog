@@ -65,8 +65,10 @@ hostname = reg.mydomain.com
 
  ssl_cert = /data/cert/server.crt
 → ssl_cert = /home/server/harbor/cert/_____.xsg.crt
+
  ssl_cert_key = /data/cert/server.key
 → ssl_cert_key = /home/server/harbor/cert/_____.xsg.key
+
 -------
 
 
